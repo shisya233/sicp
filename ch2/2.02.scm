@@ -1,0 +1,31 @@
+(load "ch2/basic.scm")
+(define (print-point p)
+  (newline)
+  (display "(")
+  (display (x-point p))
+  (display ",")
+  (display (y-point p))
+  (display ")"))
+
+(define (make-segment start end) (cons start end))
+(define (start-segment segment) (car segment))
+(define (end-segment segment) (cdr segment))
+(define (make-point x y) (cons x y))
+(define (x-point point) (car point))
+(define (y-point point) (cdr point))
+
+(define (midpoint-segment segment)
+  (let ((x1 (x-point (start-segment segment)))
+        (y1 (y-point (start-segment segment)))
+        (x2 (x-point (end-segment segment)))
+        (y2 (y-point (end-segment segment))))
+    (make-point
+      (average x1 x2)
+      (average y1 y2))))
+
+;test
+;(define p1 (make-point 3 9))
+;(define p2 (make-point 8 6))
+;(define seg (make-segment p1 p2))
+;(print-point (midpoint-segment seg))
+;(newline)

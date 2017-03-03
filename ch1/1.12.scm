@@ -1,0 +1,13 @@
+(define (f i j)
+  (cond ((= j 1) 1)
+        ((= i j) 1)
+        (else (+ (f (- i 1) (- j 1))
+                 (f (- i 1) j))))
+  )
+
+(print (f 6 1))
+(print (f 6 2))
+(print (f 6 3))
+(print (f 6 4))
+(print (f 6 5))
+(print (f 6 6))

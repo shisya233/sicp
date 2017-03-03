@@ -1,0 +1,8 @@
+(define (sum-1 a b c)
+  (cond ((and (<= a b) (<= a c)) (+ b c))
+        ((and (<= b a) (<= b c)) (+ a c))
+        ((and (<= c a) (<= c b)) (+ a b))))
+(define (sum-2 a b c)
+  (if (< a b)
+    (if (< a c) (+ b c) (+ a b))
+    (if (< b c) (+ a c) (+ a b))))

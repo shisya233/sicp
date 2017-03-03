@@ -1,0 +1,13 @@
+(define (* a b)
+  (cond ((= b 1) a)
+        ((even? b) (* (double a) (halve b)))
+        (else (+ a (* (double a) (halve (- b 1))))))
+  )
+(define (even? x)
+  (= (remainder x 2) 0))
+
+(define (double a)
+  (+ a a))
+(define (halve a)
+  (/ a 2))
+(print (* 3 5))

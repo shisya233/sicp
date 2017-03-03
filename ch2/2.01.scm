@@ -1,0 +1,10 @@
+(define (make-rat n d)
+  (define (sign n d)
+    (if (> (* n d) 0)
+      +
+      -))
+  (let ((g (gcd n d))
+        (na (abs n))
+        (da (abs d)))
+    (cons (/ ((sign n d) 0 na) g)
+          (/ da g))))

@@ -1,0 +1,23 @@
+(define (ff x) 
+   (* 2 (* x x)))
+(define (sum term a next b)
+  (if (> a b)
+    0
+    (+ (term a)
+       (sum term (next a) next b))))
+
+(define (intergral f a b n)
+  (define h (/ (- b a) n))
+  (define (integral-term x)
+    (+ (* 4 (f x)) (f (- x 1)) (f (+ x 1))))
+  (define (integral-next x)
+    (+ x h h))
+  (* (/ h 3) 
+     (sum integral-term (+ a h) integral-next (- b h)) )
+  )
+
+(print (zhengfu 1))
+(print (zhengfu 0))
+(print (zhengfu 2))
+(print (zhengfu 6))
+(print (time (intergral ff 1 2 1000)))
