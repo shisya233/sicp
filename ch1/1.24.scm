@@ -1,14 +1,11 @@
+(load "fast-prime.scm")
 (define (smallest-divisor n)
   (find-divisor n 2))
 
 (define (find-divisor n test-divisor)
   (cond ((> (square test-divisor) n) n)
         ((divides? test-divisor n) test-divisor)
-        (else (find-divisor n (next test-divisor)))))
-(define (next n)
-  (if (= n 2)
-    3
-    (+ n 2)))
+        (else (find-divisor n (+ test-divisor 1)))))
 (define (divides? a b)
   (= (remainder b a) 0))
 (define (square a) (* a a))
@@ -30,7 +27,7 @@
   (start-prime-test n (current-milliseconds)))
 
 (define (start-prime-test n start-time)
-  (if (prime? n)
+  (if (fast-prime? n 20)
     (report-prime (- (current-milliseconds) start-time))
     0))
 
@@ -45,10 +42,7 @@
         ((odd? n) (search-for-primes (+ n 2) (- count (timed-prime-test n))))))
 
 ;test
-(search-for-primes 10000 5)
-(search-for-primes 100000 5)
-(search-for-primes 1000000 5)
-(search-for-primes 10000000 5)
-(search-for-primes 100000000 5)
-(search-for-primes 10000000000 5)
-(search-for-primes 1000000000000 5)
+(search-for-primes 10000 10)
+(search-for-primes 100000 10)
+(search-for-primes 1000000 10)
+(search-for-primes 10000000 10)
