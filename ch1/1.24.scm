@@ -1,4 +1,4 @@
-(load "fast-prime.scm")
+(load "ch1/fast-prime.scm")
 (define (smallest-divisor n)
   (find-divisor n 2))
 
